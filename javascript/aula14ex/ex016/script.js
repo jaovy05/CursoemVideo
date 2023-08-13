@@ -3,8 +3,7 @@ function contador(){
     var fim = document.getElementById("fim").value;
     var passo = Number(document.getElementById("passo").value);
     var res = document.getElementById("res");
-    if(inicio === "") res.innerHTML = "Digite o inicio";
-    else if(fim === "") res.innerHTML = "Digite o fim";
+    if(inicio.length == 0 ||  fim.length == 0) alert("Faltam dados");
     else {
         if(passo == 0) {
             alert("Considerando o passo como 1");
