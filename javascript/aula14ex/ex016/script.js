@@ -11,21 +11,18 @@ function contador(){
             passo = 1}
         fim = Number(fim);
         res.innerHTML = `Contando: <br>`
+        if(passo < 0)  passo*= -1;
         if(inicio < fim){
-            if(passo < 0)  passo*= -1;
             for(inicio = Number(inicio); inicio <= fim; inicio += passo){
                 res.innerHTML += inicio;
                 if(inicio + passo <= fim)
                     res.innerHTML +=  "&#128073;";
-            }
-            res.innerHTML += `&#127937;`;
-        } else {
-            if(passo > 0)  passo*= -1;
-            for(inicio = Number(inicio); inicio >= fim; inicio += passo){
+            }} else {
+            for(inicio = Number(inicio); inicio >= fim; inicio -= passo){
                 res.innerHTML += inicio;
-                if(inicio + passo >= fim)
+                if(inicio - passo >= fim)
                     res.innerHTML +=  "&#128073;";
-            }
-            res.innerHTML += `&#127937;`;
-        }}
+            }}
+         res.innerHTML += `&#127937;`;
+    }
 }
