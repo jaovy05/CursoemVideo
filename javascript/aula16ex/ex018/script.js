@@ -1,16 +1,18 @@
 var valores = [];
 function adicionar() {
-  let num = document.getElementById("num").value;
-  let tabela = document.getElementById("tabela");
-  if(num.length === 0 || Number(num) < 1 || Number(num) > 100) alert("digite um número entre 1 e 100");
+  let num = document.getElementById("num");
+  let n = Number(num.value)
+  var tabela = document.getElementById("tabela");
+  if(num.value.length === 0 || n < 1 || n > 100 || duplicada(valores, n)) alert("digite um número entre 1 e 100 e que não esteja na lista");
   else{
-    num = Number(num)
-    valores.push(num);
+    if(valores.length === 0)  tabela.innerHTML = "";
+    valores.push(n);
     let opcao = document.createElement("option");
-    opcao.value = num;
-    opcao.textContent = `Valor ${num} adiconado`;
+    opcao.value = n;
+    opcao.textContent = `Valor ${n} adiconado`;
     tabela.appendChild(opcao);
   }
+  num.value = "";
 }
 
 function finalizar(){
@@ -19,6 +21,7 @@ function finalizar(){
   } else {
     let res = document.getElementById("res");
     res.innerHTML = "";
+    tabela.innerHTML = "";
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
     let p3 = document.createElement("p");
@@ -34,7 +37,7 @@ function finalizar(){
     res.appendChild(p3);
     res.appendChild(p4);
     res.appendChild(p5);
-    
+    valores = [];
   }
 }
 
@@ -61,4 +64,10 @@ function soma(n){
 
 function media(n){
   return soma(n)/n.length
+}
+
+function duplicada (v, n){
+  for(let i = 0; i < v.length; i++)
+    if(n === v[i]) return true;
+  return false;
 }
